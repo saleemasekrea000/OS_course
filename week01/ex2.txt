@@ -1,0 +1,121 @@
+    1  ls
+    2  nano namelist.txt
+    3  nano saleem &
+    4  cat saleem
+    5  touch
+    6  touch saleem.txt
+    7  cat saleem.txt
+    8  vi saleem.txt
+    9  nano listname
+   10  cat namelist
+   11  nano namelist
+   12  cat namelist
+   13  whoami
+   14  hostname
+   15  man sort
+   16  find /proc/ -name "*task*" 1> output.txt
+   17  find /proc/ -name "*task*" 1> output.txt 2> error.txt
+   18  find /proc/ -name "*tas1k*" 1> output.txt 2> error.txt
+   19  nano output
+   20  mkdir test
+   21  ls
+   22  cd test/
+   23  rm -r test/
+   24  clc
+   25  gedit namelist
+   26  gedit namelist &
+   27  fg %1
+   28  jobs
+   29  mkdir
+   30  mkdir --help
+   31  mkdir OS
+   32  cd OS
+   33  mkdir week01
+   34  cd week01/
+   35  mkdir ~/week01
+   36  cd ~/week01/
+   37  find /usr/bin -type f -name "*gcc*" | sort -r | tail -n 5 > ~/week01/ex1.txt
+   38  cat ex1.txt
+   39  nano ex1.txt
+   40  cat ex1.txt
+   41  ls
+   42  ls -1 /usr/bin/*gcc* | sort -r | tail -n 5 > ~/week01/ex1.txt
+   43  clear
+   44  cd ∼/week01
+   45  cd Home
+   46  ls
+   47  cat ex1.txt 
+   48  ls -1 /usr/bin/*gcc* | sort -r | tail -n 5 > ~/week01/ex1.txt
+   49  clear
+   50  mkdir ∼/week01
+   51  ls
+   52  cd Desktop/
+   53  mkdir ∼/week01
+   54  cd ..
+   55  mkdir ∼/week01
+   56  cd ..
+   57  mkdir ∼/week01
+   58  mkdir ~/week01
+   59  cd ~/week01
+   60  find /user/bin -type f -name"*gcc*" | sort -r | tail -n 5 > ~/week01/ex1.txt
+   61  find /user/bin -type f -name "*gcc*" | sort -r | tail -n 5 > ~/week01/ex1.txt
+   62  find /usr/bin -type f -name "*gcc*" | sort -r | tail -n 5 > ~/week01/ex1.txt
+   63  ls
+   64  cat.txt
+   65  ls -1 /usr/bin/*gcc*|sort-r|tail-n5>~/week01/ex1.txt
+   66  ls -1 /usr/bin/*gcc*|sort-r|tail-n 5>~/week01/ex1.txt
+   67  clear
+   68  ls -1 /usr/bin/*gcc*|sort-r|tail-n 5>~/week01/ex1.t
+   69  history
+   70  ls -1 /usr/bin/*gcc* | sort -r | tail -n 5 > ~/week01/ex1.txt
+   71  clear
+   72  ls -1 /usr/bin/*gcc* | sort -r | tail -n 5 > ~/week01/ex1.txt
+   73  ls -1 usr/bin/*gcc* | sort -r | tail -n 5 > ~/week01/ex1.txt
+   74  cd usr
+   75  cd ..
+   76  cd usr
+   77  cd /usr/bin
+   78  find /usr/bin -type f -name "*gcc*" | sort -r | tail -n 5 > ~/week01/ex1.txt
+   79  cd ..
+   80  cd ~/week01/
+   81  find /usr/bin -type f -name "*gcc*" | sort -r | tail -n 5 > ~/week01/ex1.txt
+   82  cat ex1.txt 
+   83  ls
+   84  ls -1 /usr/bin/*gcc* | sort -r | tail -n 5 > ~/week01/ex1.txt
+   85  ls /usr/bin
+   86  gcc --version
+   87  sudo apt install gcc
+   88  ls -1 /usr/bin/*gcc* | sort -r | tail -n 5 > ~/week01/ex1.txt
+   89  cat ex1.txt 
+   90  clear
+   91  find /usr/bin -type f -name "*gcc*" | sort -r | tail -n 5 > ~/week01/ex1.txt
+   92  cat ex1.txt 
+   93  history
+   94  cd ..
+   95  mkdir training
+   96  cd ..
+   97  cd .
+   98  mkdir training
+   99  cd training/
+  100  man sudo
+  101  nano notes
+  102  nano notes &
+  103  fg
+  104  fg1
+  105  fg 1
+  106  nano notes &
+  107  fg 1
+  108  gedit notes.txt
+  109  jobs
+  110  kill 1
+  111  jobs
+  112  nano notes &
+  113  jobs
+  114  kill 
+  115  kill %1
+  116  visudo
+  117  man visudo
+  118  cd ..
+  119  cd week01/
+  120  history
+  121  history > ~/week01/ex2.txt

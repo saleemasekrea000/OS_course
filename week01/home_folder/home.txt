@@ -1,0 +1,13 @@
+total 48
+drwxr-xr-x 2 saleem saleem 4096 Sep  6 08:13 Videos
+drwxr-xr-x 2 saleem saleem 4096 Sep  6 08:13 Templates
+drwxr-xr-x 2 saleem saleem 4096 Sep  6 08:13 Public
+drwxr-xr-x 2 saleem saleem 4096 Sep  6 08:13 Pictures
+drwxr-xr-x 2 saleem saleem 4096 Sep  6 08:13 Music
+drwxr-xr-x 2 saleem saleem 4096 Sep  6 08:13 Documents
+drwx------ 5 saleem saleem 4096 Sep  6 08:24 snap
+drwxr-xr-x 2 saleem saleem 4096 Sep  6 09:28 Desktop
+drwxrwxr-x 2 saleem saleem 4096 Sep  6 09:40 test
+drwxr-xr-x 4 saleem saleem 4096 Sep 10 12:46 Downloads
+drwxrwxr-x 2 saleem saleem 4096 Sep 10 13:58 training
+drwxrwxr-x 4 saleem saleem 4096 Sep 10 15:03 week01
