@@ -16,3 +16,5 @@ ls -lt -r / > root.txt
 ls -lt -r ~ > home.txt
 cat root_folder/root.txt
 cat home_folder/home.txt
+ls  root_folder
+ls home_folder
