@@ -34,7 +34,7 @@ void convert(long long int x, int s, int t) {
     char reversed_result[100];
     int len = strlen(result);
     for (int i = 0; i < len; i++) {
-        reversed_result[i] = result[len - i - 1];
+       sprintf(reversed_result + i, "%c", result[len - i - 1]);
     }
     reversed_result[len] = '\0';
     printf("%s\n", reversed_result);
@@ -43,12 +43,23 @@ void convert(long long int x, int s, int t) {
 int main() {
     long long int num;
     int source_base, target_base;
-    printf("Enter a non-negative number: ");
-    scanf("%lld", &num);
-    printf("Enter the source base ");
+    char num_str[100];
+
+    printf("Enter a non-negative number as a string: ");
+    scanf("%s", num_str);
+
+    if (sscanf(num_str, "%lld", &num) != 1) {
+        printf("Invalid input!\n");
+        return 1;
+    }
+
+    printf("Enter the source base: ");
     scanf("%d", &source_base);
-    printf("Enter the target base ");
+    printf("Enter the target base: ");
     scanf("%d", &target_base);
+
     convert(num, source_base, target_base);
+
     return 0;
 }
+
