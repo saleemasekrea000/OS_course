@@ -22,7 +22,7 @@ int main() {
         u[i] = rand() % 100;
         v[i] = rand() % 100;
     }
-    FILE* file = fopen("temp.txt", "a");
+    FILE* file = fopen("temp.txt", "w");
     if (file == NULL) {
         perror("Error opening the file");
         return 1;
