@@ -1,0 +1,32 @@
+The program starts with one initial parent process.
+In a loop, it calls fork() three times, creating three child
+processes.
+These child processes, in turn, enter the same loop, each
+ creating more child processes.
+This results in an exponential growth in the number of
+processes. i have one parent process and 2^3 (8) child
+processes in total.
+
+stree output for n=3:
+ex3(4815)─┬─ex3(4817)─┬─ex3(4819)───ex3(4822)
+          │           └─ex3(4821)
+          ├─ex3(4818)───ex3(4823)
+          └─ex3(4820)
+
+
+
+When n is set to 5:
+The program starts with one initial parent process.
+In a loop, it calls fork() five times, creating five child
+processes.
+Similar to the previous scenario, these child processes, in
+turn, enter the same loop, each creating more child processes.
+This also results in exponential growth in the number of
+processes. i have one parent process and 2^5 (32) child
+processes in total.
+
+
+
+The key difference between the two scenarios is the value of n,
+which determines the number of iterations in the loop where
+each iteration creates additional child processes.
