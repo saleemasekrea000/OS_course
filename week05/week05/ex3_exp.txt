@@ -1,0 +1,65 @@
+For each value of m, the script will calculate the start and end values for each thread. Here is  how it works:
+**************************
+When m = 1:
+
+Thread 0:
+start = 0
+end = n = 10000000
+*********************************************************
+When m = 2:
+Thread 0:
+start = 0
+end = 5000000
+Thread 1:
+start = 5000000
+end = n = 10000000
+*********************************************************
+When m = 4:
+
+Thread 0:
+start = 0
+end = 2500000
+Thread 1:
+start = 2500000
+end = 5000000
+Thread 2:
+start = 5000000
+end = 7500000
+Thread 3:
+start = 7500000
+end = n = 10000000
+*********************************************************
+When m = 10:
+
+Thread 0:
+start = 0
+end = 1000000
+Thread 1:
+start = 1000000
+end = 2000000
+...same for thread 3,4,5,6,7
+Thread 8:
+start = 8000000
+end = 9000000
+Thread 9:
+start = 9000000
+end = n = 10000000
+***********************************************************
+When m = 100:
+its 1000000 for each thread
+Thread 0:
+start = 0
+end = 100000
+Thread 1:
+start = 100000
+end = 200000
+...
+Thread 98:
+start = 9800000
+end = 9900000
+Thread 99:
+start = 9900000
+end = n = 10000000
+These values represent how the range [0, n) is divided into subintervals for each thread based on the value of m. Each thread is responsible for checking prime numbers within its assigned subinterval.
+
+for the time we notic the decresing of the time because the increseing  of the  threads number 

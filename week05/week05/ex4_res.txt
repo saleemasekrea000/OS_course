@@ -1,0 +1,10 @@
+n=10000000 m=1 Execution Time: Total primes in [0, 10000000) = 664579
+6.44 seconds
+n=10000000 m=2 Execution Time: Total primes in [0, 10000000) = 664579
+3.86 seconds
+n=10000000 m=4 Execution Time: Total primes in [0, 10000000) = 664579
+2.78 seconds
+n=10000000 m=10 Execution Time: Total primes in [0, 10000000) = 664579
+2.99 seconds
+n=10000000 m=100 Execution Time: Total primes in [0, 10000000) = 664579
+3.63 seconds

@@ -1,0 +1,19 @@
+n=10000000 m=1 Execution Time: Total primes in [0, 10000000) = 664579
+6.24 seconds
+n=10000000 m=2 Execution Time: Total primes in [0, 10000000) = 664579
+3.62 seconds
+n=10000000 m=4 Execution Time: Total primes in [0, 10000000) = 664579
+2.55 seconds
+n=10000000 m=10 Execution Time: Total primes in [0, 10000000) = 664579
+3.10 seconds
+
+ With a single thread (m=1), the program takes 6.24 seconds to complete. This is the slowest configuration because only one thread is doing the work sequentially, and there is no parallelism.
+
+With two threads (m=2), there's a noticeable improvement in execution time, which reduces to 3.62 seconds. This because that introducing parallelism , as the workload is divided between two threads.
+
+Further increasing the number of threads to four (m=4) leads to an even shorter execution time of 2.55 seconds. This demonstrates that parallelism is effective in reducing the time it takes to compute prime numbers.
+With ten threads (m=10), the execution time increases slightly to 3.10 seconds. This might be due to increased overhead from managing a larger number of threads and synchronization, which can offset some of the benefits of parallelism.
+i search on it and i see multi result for the overhed :
+
+have a limited number of CPU cores, adding too many threads may lead to contention for CPU time.
+osing mutexes for synchronization can introduce overhead, especially when there are many threads contending for locks. This overhead may become significant with a large number of threads and impact performance.

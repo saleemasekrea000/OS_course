@@ -1,0 +1,14 @@
+##this exercise take 8h from me it is correct but is not running on my VM for resons i'm searching on it ......
+In Part I of this exercise,  i developed a basic messaging system using unnamed pipes. This system involves two processes, a publisher and a subscriber, connected by an unnamed pipe. The publisher reads messages from the standard input and transmits them to the subscriber, who prints the received messages to the standard output. Each message's size is limited to a maximum of 1024 bytes.
+
+In Part II, i expanded my messaging system to support multiple subscribers by utilizing named pipes. i created a publisher program (publisher.c) that spawns n child processes, where n is specified through a command-line argument. Each child process opens a named pipe that corresponds to a subscriber's index. For instance, the first subscriber opens /tmp/ex1/s1, the second opens /tmp/ex1/s2, and so on.
+
+Additionally, a subscriber program (subscriber.c) that takes the subscriber's index as a command-line argument and opens the respective named pipe to read messages. It then prints these messages to the standard output.
+
+Script to Run the Publisher and Subscribers (ex1.sh)
+
+a script, ex1.sh, to initiate one publsher and multiple subscribers. The number of subscribers (n) is specified as a command-line argument for the script. This script starts the publisher and subscribers in separate terminal windows, ensuring their readiness to read and write messages. By running this script, we can observe the interaction between the publisher and subscribers.
+
+
+
+
