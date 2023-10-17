@@ -1,0 +1,3 @@
+here it will work :
+it will take the first process and keep running until onerther process distrupt and take the role of running 
+and the remanning time for the first process will add to the que and the same for the rest of the process.

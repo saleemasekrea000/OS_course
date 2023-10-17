@@ -1,0 +1,4 @@
+Changing the base to 100 won't affect the report's content, but it will result in more numbers being printed.
+ If we set all the arrival times to zero,
+  the report will display the numbers in sequential index order: {0, 1, 2, 3, 4, 5, 6}.
+ 

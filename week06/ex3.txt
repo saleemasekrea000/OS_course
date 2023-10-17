@@ -1,0 +1,6 @@
+The shortest job first scheduler is more effective than the first-come-first-served (FCFS) scheduler 
+because it minimizes waiting times for other processes. 
+By selecting the shortest job first, it reduces the time other processes have to wait.
+ In contrast, the FCFS algorithm may prioritize longer jobs, 
+ leading to longer waiting times for other processes.
+  
