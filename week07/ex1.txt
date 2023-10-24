@@ -1,0 +1,7 @@
+First Fit throughput is: 120.60
+
+Best Fit throughput is: 31.54
+
+Worst Fit throughput is: 28.20
+
+First Fit performs the best in terms of throughput, while Best Fit and Worst Fit lag behind. 
