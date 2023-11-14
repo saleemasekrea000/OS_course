@@ -9,8 +9,38 @@
 #include <string.h>
 #include <signal.h>
 #include <dirent.h>
+
 #define PATH_MAX 4096
+
 char path[PATH_MAX];
+
+void find_all_hlinks(const char *source);
+void unlink_all(const char *source);
+void create_sym_link(const char *source, const char *link);
+void sigint_handler(int signum);
+
+void create_and_modify_files(const char *dir_path);
+void move_and_modify_files(const char *dir_path);
+void cleanup(const char *dir_path);
+
+int main(int argc, char *argv[])
+{
+    if (argc != 2)
+    {
+        fprintf(stderr, "Usage: %s <watched_directory_path>\n", argv[0]);
+        exit(EXIT_FAILURE);
+    }
+
+    snprintf(path, PATH_MAX, "%s", argv[1]);
+    signal(SIGINT, sigint_handler);
+
+    create_and_modify_files(argv[1]);
+    move_and_modify_files(argv[1]);
+    cleanup(argv[1]);
+
+    return 0;
+}
+
 void find_all_hlinks(const char *source)
 {
     struct stat file_stat;
@@ -99,6 +129,7 @@ void create_sym_link(const char *source, const char *link)
     }
 }
 void sigint_handler(int signum)
+
 {
     DIR *dir = opendir(path);
     if (dir == NULL)
@@ -121,55 +152,59 @@ void sigint_handler(int signum)
     closedir(dir);
     exit(EXIT_SUCCESS);
 }
-int main(int argc, char *argv[])
+void create_and_modify_files(const char *dir_path)
 {
-    if (argc != 2)
-    {
-        fprintf(stderr, "Usage: %s <watched_directory_path>\n", argv[0]);
-        exit(EXIT_FAILURE);
-    }
-    snprintf(path, PATH_MAX, "%s", argv[1]);
-
-    signal(SIGINT, sigint_handler);
     char full[PATH_MAX];
-    snprintf(full, PATH_MAX, "%s/myfile1.txt", argv[1]);
+    snprintf(full, PATH_MAX, "%s/myfile1.txt", dir_path);
     printf("%s\n", full);
+
     FILE *file1 = fopen(full, "w");
     if (file1 == NULL)
     {
         perror("fopen");
         exit(EXIT_FAILURE);
     }
+
     fprintf(file1, "Hello world.\n");
     fclose(file1);
+
     full[PATH_MAX];
-    snprintf(full, PATH_MAX, "%s/myfile1.txt", argv[1]);
+    snprintf(full, PATH_MAX, "%s/myfile1.txt", dir_path);
     char second[PATH_MAX];
-    snprintf(second, PATH_MAX, "%s/myfile11.txt", argv[1]);
+    snprintf(second, PATH_MAX, "%s/myfile11.txt", dir_path);
     link(full, second);
     full[PATH_MAX];
-    snprintf(full, PATH_MAX, "%s/myfile1.txt", argv[1]);
+    snprintf(full, PATH_MAX, "%s/myfile1.txt", dir_path);
     second[PATH_MAX];
-    snprintf(second, PATH_MAX, "%s/myfile12.txt", argv[1]);
+    snprintf(second, PATH_MAX, "%s/myfile12.txt", dir_path);
     link(full, second);
     find_all_hlinks(full);
+}
+
+void move_and_modify_files(const char *dir_path)
+{
+    char full[PATH_MAX];
+    snprintf(full, PATH_MAX, "%s/myfile1.txt", dir_path);
+
     if (rename(full, "/tmp/myfile1.txt") == -1)
     {
         perror("rename");
         exit(EXIT_FAILURE);
     }
+
     char third[PATH_MAX];
-    snprintf(third, PATH_MAX, "%s/myfile11.txt", argv[1]);
+    snprintf(third, PATH_MAX, "%s/myfile11.txt", dir_path);
     FILE *file11 = fopen(third, "a");
     if (file11 == NULL)
     {
         perror("fopen");
         exit(EXIT_FAILURE);
     }
+
     fprintf(file11, "Modification.");
     fclose(file11);
     third[PATH_MAX];
-    snprintf(third, PATH_MAX, "%s/myfile13.txt", argv[1]);
+    snprintf(third, PATH_MAX, "%s/myfile13.txt", dir_path);
     create_sym_link("/tmp/myfile1.txt", third);
     FILE *tmp_file = fopen("/tmp/myfile1.txt", "a");
     if (tmp_file == NULL)
@@ -177,10 +212,14 @@ int main(int argc, char *argv[])
         perror("fopen");
         exit(EXIT_FAILURE);
     }
+
     fprintf(tmp_file, "Modification in /tmp/myfile1.txt.");
     fclose(tmp_file);
-    third[PATH_MAX];
-    snprintf(third, PATH_MAX, "%s/myfile11.txt", argv[1]);
+}
+
+void cleanup(const char *dir_path)
+{
+    char third[PATH_MAX];
+    snprintf(third, PATH_MAX, "%s/myfile11.txt", dir_path);
     unlink_all(third);
-    return 0;
 }
