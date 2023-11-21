@@ -1,3 +1,4 @@
+gcc ex1.c -o ex1
 # Allocate space for a 50 MB image file named lofs.img using fallocate.
 fallocate -l 50M lofs.img 
 
