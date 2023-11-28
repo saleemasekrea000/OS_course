@@ -3,11 +3,7 @@
 #include <fcntl.h>
 #include <unistd.h>
 #include <linux/input.h>
-
-// Define constants for shortcut codes
-#define SHORTCUT_PE 3
-#define SHORTCUT_CAP 14
-#define SHORTCUT_RAM 40
+#include <stdbool.h>
 
 // Structure to represent the state of the keyboard
 struct KeyboardState {
@@ -20,15 +16,25 @@ void handleShortcuts(const struct KeyboardState *state);
 // Function to get the string representation of an event type
 const char *getEventType(int value);
 
-// Function to monitor the keyboard input
+// Function to monitor the keyboard input and perform corresponding actions
 void monitorKeyboard(const char *device_path, const char *output_file);
 
+// Function to open the keyboard device
+int openKeyboardDevice(const char *device_path);
+
+// Function to open the output file
+FILE *openOutputFile(const char *output_file);
 
 int main() {
     const char *device_path = "/dev/input/by-path/platform-i8042-serio-0-event-kbd";
     const char *output_file = "ex1.txt";
     monitorKeyboard(device_path, output_file);
     return 0;
+}
+
+// Function to check if the event is valid
+bool isValidEvent(const struct input_event *ev) {
+    return (ev->type == EV_KEY) && (ev->value >= 0 && ev->value <= 2);
 }
 
 // Function to handle specific keyboard shortcuts based on the keyboard state
@@ -42,7 +48,7 @@ void handleShortcuts(const struct KeyboardState *state) {
     }
 }
 
-// Function to get the string representation of an event type
+
 const char *getEventType(int value) {
     switch (value) {
     case 0:
@@ -56,21 +62,33 @@ const char *getEventType(int value) {
     }
 }
 
-// Function to monitor the keyboard input and perform corresponding actions
-void monitorKeyboard(const char *device_path, const char *output_file) {
-    // Open the keyboard device
+
+int openKeyboardDevice(const char *device_path) {
     int fd = open(device_path, O_RDONLY);
     if (fd == -1) {
         perror("Error opening device");
         exit(EXIT_FAILURE);
     }
+    return fd;
+}
 
-    // Open the output file
+
+FILE *openOutputFile(const char *output_file) {
     FILE *output = fopen(output_file, "w");
     if (output == NULL) {
         perror("Error opening output file");
         exit(EXIT_FAILURE);
     }
+    return output;
+}
+
+
+void monitorKeyboard(const char *device_path, const char *output_file) {
+    // Open the keyboard device
+    int fd = openKeyboardDevice(device_path);
+
+    // Open the output file
+    FILE *output = openOutputFile(output_file);
 
     // Initialize the keyboard state with all keys in the released state
     struct input_event ev;
@@ -80,7 +98,7 @@ void monitorKeyboard(const char *device_path, const char *output_file) {
     while (1) {
         ssize_t n = read(fd, &ev, sizeof(ev));
         if (n == sizeof(ev)) {
-            if (ev.type == EV_KEY && (ev.value == 0 || ev.value == 1 || ev.value == 2)) {
+             if (isValidEvent(&ev))  {
                 // Get the string representation of the event type
                 const char *event_type = getEventType(ev.value);
 
@@ -109,4 +127,3 @@ void monitorKeyboard(const char *device_path, const char *output_file) {
     fclose(output);
     close(fd);
 }
-
