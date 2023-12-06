@@ -1,0 +1,19 @@
+Thread 1 is created.
+Thread 1 is holding mutexes: 
+Thread 1  lock the mutex 2.
+Thread 3 is created.
+Thread 3 is holding mutexes: 
+Thread 3  lock the mutex 0.
+Thread 1 is created.
+Thread 1 is holding mutexes: 2 
+Deadlock is detected.
+Thread 0 is holding mutexes: 
+Thread 1 is holding mutexes: 2 
+Thread 2 is holding mutexes: 
+Thread 3 is holding mutexes: 0 
+
+thread 1 lock a mutex 2 ......1
+thread 3 lock a mutex 0 ......2
+then thread 1 trying to lock a mutex 0 which is already held by Thread 3 ,creating a circular dependency among the threads' resource requests, resulting in a deadlock .
+
+Note : it migh happen deadlock with the same input but with different thread depends on the time thread wait and the OS .
